@@ -14,7 +14,7 @@ Wallet API for generating segwit wallet and multisignature P2SH address
 
 ## Local development
 - Fork/Clone
-- Install dependencies - yarn install
-- Compile - npm run build
-- Run the development server - yarn run dev
-- Test - yarn run test
+- Install dependencies - ``yarn install``
+- Compile - ``npm run build``
+- Run the development server - ``yarn run dev``
+- Test - ``yarn run test``
