@@ -21,19 +21,18 @@ export default ({ app }: { app: express.Application }) => {
   app.use(Limiter);
   app.use(bodyParser.json());
   app.use(config.api.prefix, routes());
+
   app.use((req, res, next) => {
     const err: any = new Error('Not Found');
     err['status'] = 404;
     next(err);
   });
-
   
   app.use((err: any, req: any, res: any, next?:any) => {
     if (err.name === 'ValidationError') {
-      return res.status(400).send({ success: false, message: err.message });
+      return res.status(400).json({ success: false, message: err.message });
     }
-    res.status(err.status || 400);
-    res.json({
+    res.status(400).json({
       errors: {
         message: err.message,
         status: false

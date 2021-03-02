@@ -6,14 +6,14 @@ import { Logger } from 'winston';
 
 
 export const generateHDWallet = async (req: Request, res: Response, next: NextFunction) => {
-  const generateSchema = Joi.object({
+  const Schema = Joi.object({
     seed: Joi.string().required(),
     path: Joi.string().required(),
   });
   const logger: Logger = Container.get('logger');
   logger.debug('creating segwit address endpoint');
   try {
-    const { error, value } = generateSchema.validate(req.body);
+    const { error, value } = Schema.validate(req.body);
     if (error){
     return next(error)
     }
