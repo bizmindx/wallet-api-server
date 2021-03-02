@@ -15,9 +15,7 @@ export default class WalletService {
       const root = bip32.fromSeed(seed);
       const child = root.derivePath(path);
       const { address } = BitcoinJS.payments.p2wpkh({
-        // redeem: BitcoinJS.payments.p2wpkh({
           pubkey: child.publicKey,
-        // }),
       });
       return `${address}`;
     }catch (e) {

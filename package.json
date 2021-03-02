@@ -1,7 +1,7 @@
 {
-  "name": "bulletproof-nodejs",
+  "name": "wallet-api-service",
   "version": "1.0.0",
-  "description": "Bulletproof node.js",
+  "description": "wallet api service for generating bitcoin segwit and multisig addresses",
   "main": "src/app.ts",
   "scripts": {
     "build": "tsc",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/santiq/bulletproof-nodejs.git"
+    "url": "git+https://github.com/codaelux/wallet-api-server.git"
   },
   "keywords": [
     "wallet",
@@ -71,7 +71,7 @@
     "typescript": "^4.0.3"
   },
   "bugs": {
-    "url": "https://github.com/santiq/bulletproof-nodejs/issues"
+    "url": "https://github.com/codaelux/wallet-api-server/issues"
   },
-  "homepage": "https://github.com/santiq/bulletproof-nodejs#readme"
+  "homepage": "https://github.com/codaelux/wallet-api-server#readme"
 }
