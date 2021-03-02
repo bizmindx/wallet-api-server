@@ -3,10 +3,9 @@ import axios from 'axios';
 export const postendpointHelper = async <T>(url: string, data: T) => {
     try {
         const base = 'http://localhost:3000';
-        const { data: response } = await axios.post(base + url, data)
-        console.log('trs',response)
-        return response.data;
+        const response  = await axios.post(base + url, data)
+        return response;
     } catch (error) {
-        throw error;
+        return error.response;
     }
 }
