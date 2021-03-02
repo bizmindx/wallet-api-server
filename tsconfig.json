@@ -14,7 +14,7 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    // "strict": true,
+    "strict": true,
     "module": "commonjs",
     "pretty": true,
     "sourceMap": true,

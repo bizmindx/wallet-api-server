@@ -6,7 +6,7 @@ import * as BitcoinJS from 'bitcoinjs-lib';
 @Service()
 export default class WalletService {
   constructor(
-    // @Inject('logger') private logger: { silly(arg0: string): void; error(arg0: unknown): void },
+    @Inject('logger') private logger: { silly(arg0: string): void; error(arg0: unknown): void },
   ) {
   }
   public async GenerateSegwitWithHD(mnemonic: string, path: string): Promise <string> {
@@ -14,28 +14,27 @@ export default class WalletService {
       const seed = bip39.mnemonicToSeedSync(mnemonic);
       const root = bip32.fromSeed(seed);
       const child = root.derivePath(path);
-      const { address } = BitcoinJS.payments.p2sh({
-        redeem: BitcoinJS.payments.p2wpkh({
+      const { address } = BitcoinJS.payments.p2wpkh({
+        // redeem: BitcoinJS.payments.p2wpkh({
           pubkey: child.publicKey,
-          network: BitcoinJS.networks.testnet,
-        }),
-        network: BitcoinJS.networks.testnet,
+        // }),
       });
-      return address;
+      return `${address}`;
     }catch (e) {
+      this.logger.error(e);
       throw e;
     }
   }
 
   public async GenerateMultisigP2SH(m: number, addresses: Array<string>): Promise <string> {
-    try {
+    try { 
       const pubkeys = addresses.map(hex => Buffer.from(hex, 'hex'));
       const { address } = BitcoinJS.payments.p2sh({
         redeem: BitcoinJS.payments.p2ms({ m, pubkeys }),
       });
-      return address;
+      return `${address}`
     }catch (e) {
-      // this.logger.error(e);
+      this.logger.error(e);
       throw e;
     }
   }
